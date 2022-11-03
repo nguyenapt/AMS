@@ -1,0 +1,15 @@
+{
+  "dataStudio": {
+    "name": "AMS Connector",
+    "logoUrl": "https://niteco247-s-cl.niteco.dev/img/logo.png",
+    "company": "Niteco",
+    "companyUrl": "https://niteco.com/",
+    "addonUrl": "https://niteco.com/",
+    "supportUrl": "https://niteco.com/",
+    "shortDescription": "Connect to JSON data by URL",
+    "description": "Niteco 247 JSON Connector. Fetch data from 247 Report Automation API, use caching to speed up rendering.",
+    "sources": ["CUSTOM_JSON"],
+    "authType": ["NONE"],
+    "feeType": ["FREE"]
+  }
+}

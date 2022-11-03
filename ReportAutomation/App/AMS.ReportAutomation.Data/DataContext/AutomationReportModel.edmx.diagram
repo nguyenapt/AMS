@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="971acc10a9ec47e9b0c9889bc4f38c5e" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Data_Pingdom_Check" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Data_Pingdom_Check_SummaryPerformance" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Report_Clients" Width="1.5" PointX="5.75" PointY="1.375" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Report_ClientSites" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Report_Reports" Width="1.5" PointX="10.25" PointY="1.125" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.ReportData_Pingdom" Width="1.5" PointX="3" PointY="7.25" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Pingdom_CheckDetail_Pingdom_Check" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Pingdom_Summary_Pingdom_Check" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_ReportData_Pingdom_Data_Pingdom_Check" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Report_ClientSites_Report_Clients" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Report_Reports_Report_ClientSites" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.AutomationReport_Scheduler" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Data_JiraServiceDesk" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Report_ClientJiraServiceDesks" Width="1.5" PointX="7.375" PointY="5" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.ReportData_JiraServiceDesk" Width="1.5" PointX="9.625" PointY="5" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_ReportData_JiraServiceDesk_Report_ClientJiraServiceDesks" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Report_CustomContent" Width="1.5" PointX="12.5" PointY="1.125" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Report_CustomContent_Report_Reports" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Data_PageSpeedInsights" Width="1.5" PointX="10.25" PointY="15.75" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.ReportData_PageSpeedInsights" Width="1.5" PointX="10.25" PointY="11.625" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Data_PageSpeedInsights_Report_ClientSites" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_ReportData_PageSpeedInsights_Report_ClientSites" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Data_GoogleAnalytic" Width="1.5" PointX="9.375" PointY="8.75" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Data_GoogleSearch" Width="1.5" PointX="10.25" PointY="19.125" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.ReportData_GoogleSearch" Width="1.5" PointX="10.25" PointY="22.125" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Data_GoogleAnalytic_Report_ClientSites" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Data_GoogleSearch_Report_ClientSites" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_ReportData_GoogleSearch_Report_ClientSites" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.ReportData_GoogleAnalytic" Width="1.5" PointX="10.25" PointY="26" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_ReportData_GoogleAnalytic_Report_ClientSites" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Data_GoogleSearch_Detail" Width="1.5" PointX="12.5" PointY="19.25" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Data_GoogleSearch_Detail_Data_GoogleSearch" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Recommendation_Bank" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Release_Milestone" Width="1.5" PointX="10.25" PointY="29" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Release_Milestone_Report_ClientSites" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Data_GoogleSearch_Sitemap" Width="1.5" PointX="10.25" PointY="35.75" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.ReportData_GoogleSearch_Sitemap" Width="1.5" PointX="10.25" PointY="32.75" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Data_GoogleSearch_Sitemap_Report_ClientSites" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_ReportData_GoogleSearch_Sitemap_Report_ClientSites" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.ReportData_ScreamingFrog" Width="1.5" PointX="10.25" PointY="39.375" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_ReportData_ScreamingFrog_Report_ClientSites" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.ReportSubscription" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.Dynomapper" Width="1.5" PointX="11.375" PointY="8.75" />
+        <EntityTypeShape EntityType="AMS.AutomationReportModel.ReportData_Dynomapper" Width="1.5" PointX="10.25" PointY="42.5" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_Dynomapper_Report_ClientSites" />
+        <AssociationConnector Association="AMS.AutomationReportModel.FK_ReportData_Dynomapper_Report_ClientSites" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

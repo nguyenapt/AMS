@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C461573A-79AC-4966-A1F2-22433DDF01E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AMS.ReportAutomation.Data</RootNamespace>
+    <AssemblyName>AMS.ReportAutomation.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=5.1.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.5.1.2\lib\net461\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutofacSerilogIntegration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d672c67444a98ac9, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutofacSerilogIntegration.4.0.0\lib\net461\AutofacSerilogIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.BulkInsert, Version=6.0.3.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework6.BulkInsert.6.0.3.10\lib\net45\EntityFramework.BulkInsert.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Utilities, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EFUtilities.1.0.2\lib\EntityFramework.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Apis.1.49.0\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.AnalyticsReporting.v4, Version=1.49.0.2128, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Apis.AnalyticsReporting.v4.1.49.0.2128\lib\net45\Google.Apis.AnalyticsReporting.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Apis.Auth.1.49.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Apis.Auth.1.49.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Apis.Core.1.49.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Apis.1.49.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Webmasters.v3, Version=1.49.0.1578, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Apis.Webmasters.v3.1.49.0.1578\lib\net45\Google.Apis.Webmasters.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serilog.2.10.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serilog.Sinks.File.4.1.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.RollingFile, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serilog.Sinks.RollingFile.3.3.0\lib\net45\Serilog.Sinks.RollingFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\System.Management.Automation.7.1.2\ref\net5.0\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContext\AutomationReportModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomationReportModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\AutomationReportModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\AutomationReportModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomationReportModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\AutomationReport_Scheduler.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ContextKey.cs" />
+    <Compile Include="DataContext\Data_GoogleAnalytic.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Data_GoogleSearch.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Data_GoogleSearch_Detail.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Data_GoogleSearch_Sitemap.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Data_JiraServiceDesk.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Data_PageSpeedInsights.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Data_Pingdom_Check.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Data_Pingdom_Check_SummaryPerformance.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Dynomapper.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Recommendation_Bank.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Release_Milestone.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ReportData_Dynomapper.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ReportData_GoogleAnalytic.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ReportData_GoogleSearch.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ReportData_GoogleSearch_Sitemap.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ReportData_JiraServiceDesk.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ReportData_PageSpeedInsights.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ReportData_Pingdom.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ReportData_ScreamingFrog.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ReportSubscription.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Report_ClientJiraServiceDesks.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Report_Clients.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Report_ClientSites.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Report_ClientSites_Ext.cs" />
+    <Compile Include="Repository\Dynomapper_Repository.cs" />
+    <Compile Include="Repository\Interfaces\IDynomapper_Repository.cs" />
+    <Compile Include="Repository\Interfaces\IReportData_DynomapperRepository.cs" />
+    <Compile Include="Repository\ReportData_DynomapperRepository.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IDynomapper_ProcessorService.cs" />
+    <Compile Include="Services\Processor\Dynomapper_ProcessorService.cs" />
+    <Compile Include="ViewModel\ReportModel_Ext.cs" />
+    <Compile Include="DataContext\Report_CustomContent.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Report_Reports.cs">
+      <DependentUpon>AutomationReportModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\ExceptionExtensions.cs" />
+    <Compile Include="Exceptions\Guard.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ReportSubscription_Repository.cs" />
+    <Compile Include="Repository\GoogleSearchConsole_SitemapRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReportSubscription_Repository.cs" />
+    <Compile Include="Repository\Interfaces\IGoogleSearchConsole_SitemapRepository.cs" />
+    <Compile Include="Repository\Interfaces\IRelease_MilestoneRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReportData_GoogleSearchConsoleSitemapRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReportData_ScreamingFrogRepository.cs" />
+    <Compile Include="Repository\RecommendationBank_Repository.cs" />
+    <Compile Include="Repository\GoogleSearchConsole_DetailRepository.cs" />
+    <Compile Include="Repository\GoogleSearchConsole_Repository.cs" />
+    <Compile Include="Repository\Interfaces\IRecommendationBank_Repository.cs" />
+    <Compile Include="Repository\Interfaces\IGoogleSearchConsole_DetailRepository.cs" />
+    <Compile Include="Repository\Interfaces\IGoogleSearchConsole_Repository.cs" />
+    <Compile Include="Repository\Interfaces\IPageSpeedInsights_Repository.cs" />
+    <Compile Include="Repository\Interfaces\IGoogleAnalytics_Repository.cs" />
+    <Compile Include="Repository\Interfaces\IReportData_GoogleSearchConsoleRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReportData_GoogleAnalyticRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReportData_JiraServiceDeskRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReport_PageSpeedRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReport_ClientJiraServiceDesksRepository.cs" />
+    <Compile Include="Repository\Interfaces\IJira_ServiceDeskRepository.cs" />
+    <Compile Include="Repository\PageSpeedInsights_Repository.cs" />
+    <Compile Include="Repository\Interfaces\IReport_CustomContentRepository.cs" />
+    <Compile Include="Repository\GoogleAnalytics_Repository.cs" />
+    <Compile Include="Repository\ReportData_ScreamingFrogRepository.cs" />
+    <Compile Include="Repository\ReportData_GoogleSearchConsoleSitemapRepository.cs" />
+    <Compile Include="Repository\ReportData_GoogleSearchConsoleRepository.cs" />
+    <Compile Include="Repository\ReportData_GoogleAnalyticRepository.cs" />
+    <Compile Include="Repository\ReportData_JiraServiceDeskRepository.cs" />
+    <Compile Include="Repository\ReportData_PageSpeedRepository.cs" />
+    <Compile Include="Repository\Report_ClientJiraServiceDesksRepository.cs" />
+    <Compile Include="Repository\Jira_ServiceDeskRepository.cs" />
+    <Compile Include="Repository\Report_ClientSitesRepository.cs" />
+    <Compile Include="Repository\Release_MilestoneRepository.cs" />
+    <Compile Include="Repository\Report_CustomContentRepository.cs" />
+    <Compile Include="Repository\Report_ClientsRepository.cs" />
+    <Compile Include="Repository\Report_ReportsRepository.cs" />
+    <Compile Include="Repository\ReportData_PingdomRepository.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReportData_PingdomRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReport_ReportsRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReport_ClientSitesRepository.cs" />
+    <Compile Include="Repository\Interfaces\IReport_ClientsRepository.cs" />
+    <Compile Include="Repository\Interfaces\IGenericRepository.cs" />
+    <Compile Include="Repository\Interfaces\IAutomationReport_SchedulerRepository.cs" />
+    <Compile Include="Repository\Interfaces\IPingdom_CheckRepository.cs" />
+    <Compile Include="Repository\Interfaces\IPingdom_CheckSummaryRepository.cs" />
+    <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Repository\AutomationReport_SchedulerRepository.cs" />
+    <Compile Include="Repository\Pingdom_CheckRepository.cs" />
+    <Compile Include="Repository\Pingdom_CheckSummaryRepository.cs" />
+    <Compile Include="Repository\UnitOfWork.cs" />
+    <Compile Include="Services\Crawler\DynoMapperSelenium_Service.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IDynoMapperSelenium_Service.cs" />
+    <Compile Include="Services\ReportSubscription_Service.cs" />
+    <Compile Include="Services\Crawler\ScreamingFrog_Service.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IScreamingFrog_Service.cs" />
+    <Compile Include="Services\Interfaces\IReportSubscription_Service.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IScreamingFrog_ProcessorService.cs" />
+    <Compile Include="Services\Processor\ScreamingFrog_ProcessorService.cs" />
+    <Compile Include="Services\Recommendation_BankService.cs" />
+    <Compile Include="Services\Crawler\OnpremiseLightHouse_Service.cs" />
+    <Compile Include="Services\Crawler\Dareboost_Service.cs" />
+    <Compile Include="Services\EntityService.cs" />
+    <Compile Include="Services\Crawler\Detectify_Service.cs" />
+    <Compile Include="Services\Crawler\SpeedCurve_Service.cs" />
+    <Compile Include="Services\Crawler\GoogleSearchConsole_Service.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IOnpremiseLightHouse_Service.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IDetectify_Service.cs" />
+    <Compile Include="Services\Interfaces\Crawler\ISpeedCurve_Service.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IGoogleSearchConsole_Service.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IGoogleAnalytics_Service.cs" />
+    <Compile Include="Services\Interfaces\IRecommendation_BankService.cs" />
+    <Compile Include="Services\Interfaces\IEntityService.cs" />
+    <Compile Include="Services\Interfaces\IAutomationReport_SchedulerService.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IDareboost_ProcessorService.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IDetectify_ProcessorService.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IGoogleAnalytics_ProcessorService.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IGoogleSearchConsole_ProcessorService.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IJira_ServiceDesk_ProcessorService.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IJira_ServiceDeskService.cs" />
+    <Compile Include="Services\Interfaces\IClient_ManagementService.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IPageSpeedInsights_Service.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IOnpremiseLightHouse_ProcessorService.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IPageSpeedInsights_ProcessorService.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IDareboost_Service.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\IPingdom_Check_ProcessorService.cs" />
+    <Compile Include="Services\Interfaces\Crawler\IPingdom_CheckService.cs" />
+    <Compile Include="Services\AutomationReport_SchedulerService.cs" />
+    <Compile Include="Services\Crawler\Jira_ServiceDeskService.cs" />
+    <Compile Include="Services\Interfaces\Proccessor\ISpeedCurve_ProcessorService.cs" />
+    <Compile Include="Services\Processor\Dareboost_ProcessorService.cs" />
+    <Compile Include="Services\Processor\Detectify_ProcessorService.cs" />
+    <Compile Include="Services\Processor\GoogleAnalytics_ProcessorService.cs" />
+    <Compile Include="Services\Processor\GoogleSearchConsole_ProcessorService.cs" />
+    <Compile Include="Services\Processor\Jira_ServiceDesk_ProcessorService.cs" />
+    <Compile Include="Services\Client_ManagementService.cs" />
+    <Compile Include="Services\Crawler\PageSpeedInsights_Service.cs" />
+    <Compile Include="Services\Processor\OnpremiseLightHouse_ProcessorService.cs" />
+    <Compile Include="Services\Processor\PageSpeedInsights_ProcessorService.cs" />
+    <Compile Include="Services\Crawler\GoogleAnalytics_Service.cs" />
+    <Compile Include="Services\Processor\Pingdom_Check_ProcessorService.cs" />
+    <Compile Include="Services\Crawler\Pingdom_CheckService.cs" />
+    <Compile Include="Services\Processor\SpeedCurve_ProcessorService.cs" />
+    <Compile Include="ViewModel\ReportModel.cs" />
+    <Compile Include="ViewModel\ClientSite_ReportViewModel.cs" />
+    <Compile Include="ViewModel\IRecommendationBank.cs" />
+    <Compile Include="ViewModel\RecommendationModel.cs" />
+    <Compile Include="ViewModel\ReportSubscriptionViewModel.cs" />
+    <Compile Include="ViewModel\Report_ClientSiteViewModel.cs" />
+    <Compile Include="ViewModel\Release_MilestoneViewModel.cs" />
+    <Compile Include="ViewModel\Report_CustomContentViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DataContext\AutomationReportModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutomationReportModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="DataContext\AutomationReportModel.edmx.diagram">
+      <DependentUpon>AutomationReportModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataContext\AutomationReportModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AutomationReportModel.Context.cs</LastGenOutput>
+      <DependentUpon>AutomationReportModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataContext\AutomationReportModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutomationReportModel.edmx</DependentUpon>
+      <LastGenOutput>AutomationReportModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ToolClient\AMS.GoogleAnalytic\AMS.GoogleAnalytic.csproj">
+      <Project>{9275faf1-e9ca-473a-b311-ae7b091d1bf0}</Project>
+      <Name>AMS.GoogleAnalytic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ToolClient\AMS.GoogleSearch\AMS.GoogleSearch.csproj">
+      <Project>{d4858020-1570-4bca-baf0-2a98ea905836}</Project>
+      <Name>AMS.GoogleSearch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ToolClient\AMS.JiraServicedesk\AMS.JiraServicedesk.csproj">
+      <Project>{BD285A62-6161-4094-8297-7DBE3DA42ED8}</Project>
+      <Name>AMS.JiraServicedesk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ToolClient\AMS.PageSpeed\AMS.PageSpeed.csproj">
+      <Project>{486f247d-059c-45d3-8e40-ef5d7fa7794e}</Project>
+      <Name>AMS.PageSpeed</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ToolClient\AMS.Pingdom.Client\AMS.Pingdom.Client.csproj">
+      <Project>{b36afc49-c642-49fb-a49d-53504fc1170b}</Project>
+      <Name>AMS.Pingdom.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ToolClient\AMS.Selenium\AMS.Selenium.csproj">
+      <Project>{e6a61ab4-ee5a-4cd2-9127-c177f43df09d}</Project>
+      <Name>AMS.Selenium</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AMS.ReportAutomation.Common\AMS.ReportAutomation.Common.csproj">
+      <Project>{a016e7da-9245-4bc1-bfd3-b1824a4b4b8d}</Project>
+      <Name>AMS.ReportAutomation.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AMS.ReportAutomation.ReportData\AMS.ReportAutomation.ReportData.csproj">
+      <Project>{4379774b-073f-47a1-950a-a7e6d9008faf}</Project>
+      <Name>AMS.ReportAutomation.ReportData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

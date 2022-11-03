@@ -1,0 +1,1690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AMS.AutomationReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AutomationReport_Scheduler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ExecutionTime" Type="datetime2" Precision="7" />
+          <Property Name="ExecutionTool" Type="nvarchar" MaxLength="500" />
+          <Property Name="ExecutionType" Type="int" />
+          <Property Name="ExecutionExpression" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Status" Type="int" />
+          <Property Name="IsHourly" Type="bit" />
+          <Property Name="HourlyEveryHour" Type="int" />
+          <Property Name="IsDaily" Type="bit" />
+          <Property Name="DailyEveryDay" Type="bit" />
+          <Property Name="DailyEveryWeekDay" Type="bit" />
+          <Property Name="DailyEveryDayNumber" Type="int" />
+          <Property Name="IsWeekly" Type="bit" />
+          <Property Name="WeeklyDays" Type="nvarchar" MaxLength="500" />
+          <Property Name="StartAtHour" Type="int" />
+          <Property Name="StartAtMinute" Type="int" />
+        </EntityType>
+        <EntityType Name="Data_GoogleAnalytic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="DatasetType" Type="nvarchar" MaxLength="500" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="DataTimeUtc" Type="bigint" />
+          <Property Name="CrawledTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Data_GoogleSearch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="DataTimeUtc" Type="bigint" />
+          <Property Name="CrawledTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Data_GoogleSearch_Detail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GoogleSearchId" Type="uniqueidentifier" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="500" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="DataTimeUtc" Type="bigint" />
+          <Property Name="CrawledTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Data_GoogleSearch_Sitemap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="DataTimeUtc" Type="bigint" />
+          <Property Name="CrawledTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Data_JiraServiceDesk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ServiceDeskUrl" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ProjectKey" Type="nvarchar" MaxLength="100" />
+          <Property Name="DatasetType" Type="nvarchar" MaxLength="500" />
+          <Property Name="JQL" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="DataTimeUtc" Type="bigint" />
+          <Property Name="CrawledTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Data_PageSpeedInsights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Param" Type="nvarchar" MaxLength="200" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="DataTimeUtc" Type="bigint" />
+          <Property Name="CrawledTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Data_Pingdom_Check">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastTestTimeUtc" Type="bigint" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="CrawledTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Data_Pingdom_Check_SummaryPerformance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CheckId" Type="bigint" />
+          <Property Name="Resolution" Type="int" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="DataTimeUtc" Type="bigint" />
+          <Property Name="CrawledTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Dynomapper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="LatestRunDate" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Recommendation_Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReportSection" Type="int" />
+          <Property Name="ReportProperty" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rule" Type="nvarchar(max)" />
+          <Property Name="RuleSql" Type="nvarchar(max)" />
+          <Property Name="Recommendation" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Release_Milestone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="ReleaseVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReleaseDate" Type="datetime2" Precision="7" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Report_ClientJiraServiceDesks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ServiceDeskUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProjectKey" Type="nvarchar" MaxLength="100" />
+          <Property Name="OrganizationName" Type="nvarchar" MaxLength="100" />
+          <Property Name="OrgNameForProjectIfNotProvided" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Report_Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="LogoUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Report_ClientSites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="LogoUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="SiteUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="CrawlerConfig" Type="nvarchar(max)" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Report_CustomContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReportId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReportDays" Type="int" Nullable="false" />
+          <Property Name="ReportTo" Type="bigint" Nullable="false" />
+          <Property Name="CustomReportContent" Type="nvarchar(max)" />
+          <Property Name="UnderReportSection" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Report_Reports">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ToolIds" Type="nvarchar(max)" />
+          <Property Name="ReportName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportData_Dynomapper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="ReportTimeUtc" Type="bigint" />
+          <Property Name="GeneratedTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="ReportData_GoogleAnalytic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="ReportTimeUtc" Type="bigint" />
+          <Property Name="GeneratedTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="ReportData_GoogleSearch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="500" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="ReportTimeUtc" Type="bigint" />
+          <Property Name="GeneratedTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="ReportData_GoogleSearch_Sitemap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="ReportTimeUtc" Type="bigint" />
+          <Property Name="GeneratedTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="ReportData_JiraServiceDesk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientServiceDeskId" Type="uniqueidentifier" />
+          <Property Name="DatasetType" Type="nvarchar" MaxLength="100" />
+          <Property Name="ReportTimeUtc" Type="bigint" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="GeneratedTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="ReportData_PageSpeedInsights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="Category" Type="nvarchar" MaxLength="150" />
+          <Property Name="Emulator" Type="nvarchar" MaxLength="150" />
+          <Property Name="Score" Type="float" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="LoadingExperience" Type="nvarchar(max)" />
+          <Property Name="OriginLoadingExperience" Type="nvarchar(max)" />
+          <Property Name="ReportTimeUtc" Type="bigint" />
+          <Property Name="GeneratedTimestamp" Type="datetime2" Precision="7" />
+          <Property Name="HistoryJson" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ReportData_Pingdom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CheckId" Type="bigint" />
+          <Property Name="ReportTimeUtc" Type="bigint" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="GeneratedTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="ReportData_ScreamingFrog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientSiteId" Type="uniqueidentifier" />
+          <Property Name="Json" Type="nvarchar(max)" />
+          <Property Name="ReportTimeUtc" Type="bigint" />
+          <Property Name="GeneratedTimestamp" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="ReportSubscription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReportId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReceiverEmails" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Frequency" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SubscribedByUser" Type="bit" />
+          <Property Name="IsHourly" Type="bit" />
+          <Property Name="HourlyEveryHour" Type="int" />
+          <Property Name="IsDaily" Type="bit" />
+          <Property Name="DailyEveryDay" Type="bit" />
+          <Property Name="DailyEveryWeekDay" Type="bit" />
+          <Property Name="DailyEveryDayNumber" Type="int" />
+          <Property Name="IsWeekly" Type="bit" />
+          <Property Name="WeeklyDays" Type="nvarchar" MaxLength="500" />
+          <Property Name="StartAtHour" Type="int" />
+          <Property Name="StartAtMinute" Type="int" />
+          <Property Name="SubscribedUser" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsMonthly" Type="bit" />
+          <Property Name="MonthlyDay" Type="int" />
+          <Property Name="MonthlyEveryMonth" Type="int" />
+        </EntityType>
+        <Association Name="FK_Data_GoogleAnalytic_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="Data_GoogleAnalytic" Type="Self.Data_GoogleAnalytic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_GoogleAnalytic">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Data_GoogleSearch_Detail_Data_GoogleSearch">
+          <End Role="Data_GoogleSearch" Type="Self.Data_GoogleSearch" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Data_GoogleSearch_Detail" Type="Self.Data_GoogleSearch_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Data_GoogleSearch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_GoogleSearch_Detail">
+              <PropertyRef Name="GoogleSearchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Data_GoogleSearch_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="Data_GoogleSearch" Type="Self.Data_GoogleSearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_GoogleSearch">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Data_GoogleSearch_Sitemap_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="Data_GoogleSearch_Sitemap" Type="Self.Data_GoogleSearch_Sitemap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_GoogleSearch_Sitemap">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Data_PageSpeedInsights_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="Data_PageSpeedInsights" Type="Self.Data_PageSpeedInsights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_PageSpeedInsights">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dynomapper_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="Dynomapper" Type="Self.Dynomapper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Dynomapper">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pingdom_Summary_Pingdom_Check">
+          <End Role="Data_Pingdom_Check" Type="Self.Data_Pingdom_Check" Multiplicity="0..1" />
+          <End Role="Data_Pingdom_Check_SummaryPerformance" Type="Self.Data_Pingdom_Check_SummaryPerformance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Data_Pingdom_Check">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_Pingdom_Check_SummaryPerformance">
+              <PropertyRef Name="CheckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Release_Milestone_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="Release_Milestone" Type="Self.Release_Milestone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Release_Milestone">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_ClientSites_Report_Clients">
+          <End Role="Report_Clients" Type="Self.Report_Clients" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report_ClientSites">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_CustomContent_Report_Reports">
+          <End Role="Report_Reports" Type="Self.Report_Reports" Multiplicity="1" />
+          <End Role="Report_CustomContent" Type="Self.Report_CustomContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_Reports">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report_CustomContent">
+              <PropertyRef Name="ReportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_Reports_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Report_Reports" Type="Self.Report_Reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report_Reports">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_Dynomapper_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="ReportData_Dynomapper" Type="Self.ReportData_Dynomapper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_Dynomapper">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_GoogleAnalytic_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="ReportData_GoogleAnalytic" Type="Self.ReportData_GoogleAnalytic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_GoogleAnalytic">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_GoogleSearch_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="ReportData_GoogleSearch" Type="Self.ReportData_GoogleSearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_GoogleSearch">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_GoogleSearch_Sitemap_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="ReportData_GoogleSearch_Sitemap" Type="Self.ReportData_GoogleSearch_Sitemap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_GoogleSearch_Sitemap">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_JiraServiceDesk_Report_ClientJiraServiceDesks">
+          <End Role="Report_ClientJiraServiceDesks" Type="Self.Report_ClientJiraServiceDesks" Multiplicity="0..1" />
+          <End Role="ReportData_JiraServiceDesk" Type="Self.ReportData_JiraServiceDesk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientJiraServiceDesks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_JiraServiceDesk">
+              <PropertyRef Name="ClientServiceDeskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_PageSpeedInsights_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="ReportData_PageSpeedInsights" Type="Self.ReportData_PageSpeedInsights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_PageSpeedInsights">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_Pingdom_Data_Pingdom_Check">
+          <End Role="Data_Pingdom_Check" Type="Self.Data_Pingdom_Check" Multiplicity="0..1" />
+          <End Role="ReportData_Pingdom" Type="Self.ReportData_Pingdom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Data_Pingdom_Check">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_Pingdom">
+              <PropertyRef Name="CheckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_ScreamingFrog_Report_ClientSites">
+          <End Role="Report_ClientSites" Type="Self.Report_ClientSites" Multiplicity="0..1" />
+          <End Role="ReportData_ScreamingFrog" Type="Self.ReportData_ScreamingFrog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_ScreamingFrog">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AMSAutomationReportModelStoreContainer">
+          <EntitySet Name="AutomationReport_Scheduler" EntityType="Self.AutomationReport_Scheduler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_GoogleAnalytic" EntityType="Self.Data_GoogleAnalytic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_GoogleSearch" EntityType="Self.Data_GoogleSearch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_GoogleSearch_Detail" EntityType="Self.Data_GoogleSearch_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_GoogleSearch_Sitemap" EntityType="Self.Data_GoogleSearch_Sitemap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_JiraServiceDesk" EntityType="Self.Data_JiraServiceDesk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_PageSpeedInsights" EntityType="Self.Data_PageSpeedInsights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_Pingdom_Check" EntityType="Self.Data_Pingdom_Check" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Data_Pingdom_Check_SummaryPerformance" EntityType="Self.Data_Pingdom_Check_SummaryPerformance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dynomapper" EntityType="Self.Dynomapper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recommendation_Bank" EntityType="Self.Recommendation_Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Release_Milestone" EntityType="Self.Release_Milestone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report_ClientJiraServiceDesks" EntityType="Self.Report_ClientJiraServiceDesks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report_Clients" EntityType="Self.Report_Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report_ClientSites" EntityType="Self.Report_ClientSites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report_CustomContent" EntityType="Self.Report_CustomContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report_Reports" EntityType="Self.Report_Reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportData_Dynomapper" EntityType="Self.ReportData_Dynomapper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportData_GoogleAnalytic" EntityType="Self.ReportData_GoogleAnalytic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportData_GoogleSearch" EntityType="Self.ReportData_GoogleSearch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportData_GoogleSearch_Sitemap" EntityType="Self.ReportData_GoogleSearch_Sitemap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportData_JiraServiceDesk" EntityType="Self.ReportData_JiraServiceDesk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportData_PageSpeedInsights" EntityType="Self.ReportData_PageSpeedInsights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportData_Pingdom" EntityType="Self.ReportData_Pingdom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportData_ScreamingFrog" EntityType="Self.ReportData_ScreamingFrog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportSubscription" EntityType="Self.ReportSubscription" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Data_GoogleAnalytic_Report_ClientSites" Association="Self.FK_Data_GoogleAnalytic_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Data_GoogleAnalytic" EntitySet="Data_GoogleAnalytic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Data_GoogleSearch_Detail_Data_GoogleSearch" Association="Self.FK_Data_GoogleSearch_Detail_Data_GoogleSearch">
+            <End Role="Data_GoogleSearch" EntitySet="Data_GoogleSearch" />
+            <End Role="Data_GoogleSearch_Detail" EntitySet="Data_GoogleSearch_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Data_GoogleSearch_Report_ClientSites" Association="Self.FK_Data_GoogleSearch_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Data_GoogleSearch" EntitySet="Data_GoogleSearch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Data_GoogleSearch_Sitemap_Report_ClientSites" Association="Self.FK_Data_GoogleSearch_Sitemap_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Data_GoogleSearch_Sitemap" EntitySet="Data_GoogleSearch_Sitemap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Data_PageSpeedInsights_Report_ClientSites" Association="Self.FK_Data_PageSpeedInsights_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Data_PageSpeedInsights" EntitySet="Data_PageSpeedInsights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dynomapper_Report_ClientSites" Association="Self.FK_Dynomapper_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Dynomapper" EntitySet="Dynomapper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pingdom_Summary_Pingdom_Check" Association="Self.FK_Pingdom_Summary_Pingdom_Check">
+            <End Role="Data_Pingdom_Check" EntitySet="Data_Pingdom_Check" />
+            <End Role="Data_Pingdom_Check_SummaryPerformance" EntitySet="Data_Pingdom_Check_SummaryPerformance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Release_Milestone_Report_ClientSites" Association="Self.FK_Release_Milestone_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Release_Milestone" EntitySet="Release_Milestone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_ClientSites_Report_Clients" Association="Self.FK_Report_ClientSites_Report_Clients">
+            <End Role="Report_Clients" EntitySet="Report_Clients" />
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_CustomContent_Report_Reports" Association="Self.FK_Report_CustomContent_Report_Reports">
+            <End Role="Report_Reports" EntitySet="Report_Reports" />
+            <End Role="Report_CustomContent" EntitySet="Report_CustomContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_Reports_Report_ClientSites" Association="Self.FK_Report_Reports_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Report_Reports" EntitySet="Report_Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_Dynomapper_Report_ClientSites" Association="Self.FK_ReportData_Dynomapper_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_Dynomapper" EntitySet="ReportData_Dynomapper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_GoogleAnalytic_Report_ClientSites" Association="Self.FK_ReportData_GoogleAnalytic_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_GoogleAnalytic" EntitySet="ReportData_GoogleAnalytic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_GoogleSearch_Report_ClientSites" Association="Self.FK_ReportData_GoogleSearch_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_GoogleSearch" EntitySet="ReportData_GoogleSearch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_GoogleSearch_Sitemap_Report_ClientSites" Association="Self.FK_ReportData_GoogleSearch_Sitemap_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_GoogleSearch_Sitemap" EntitySet="ReportData_GoogleSearch_Sitemap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_JiraServiceDesk_Report_ClientJiraServiceDesks" Association="Self.FK_ReportData_JiraServiceDesk_Report_ClientJiraServiceDesks">
+            <End Role="Report_ClientJiraServiceDesks" EntitySet="Report_ClientJiraServiceDesks" />
+            <End Role="ReportData_JiraServiceDesk" EntitySet="ReportData_JiraServiceDesk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_PageSpeedInsights_Report_ClientSites" Association="Self.FK_ReportData_PageSpeedInsights_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_PageSpeedInsights" EntitySet="ReportData_PageSpeedInsights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_Pingdom_Data_Pingdom_Check" Association="Self.FK_ReportData_Pingdom_Data_Pingdom_Check">
+            <End Role="Data_Pingdom_Check" EntitySet="Data_Pingdom_Check" />
+            <End Role="ReportData_Pingdom" EntitySet="ReportData_Pingdom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_ScreamingFrog_Report_ClientSites" Association="Self.FK_ReportData_ScreamingFrog_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_ScreamingFrog" EntitySet="ReportData_ScreamingFrog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AMS.AutomationReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Data_Pingdom_Check" EntityType="AMS.AutomationReportModel.Data_Pingdom_Check" />
+          <EntitySet Name="Data_Pingdom_Check_SummaryPerformance" EntityType="AMS.AutomationReportModel.Data_Pingdom_Check_SummaryPerformance" />
+          <EntitySet Name="Report_Clients" EntityType="AMS.AutomationReportModel.Report_Clients" />
+          <EntitySet Name="Report_ClientSites" EntityType="AMS.AutomationReportModel.Report_ClientSites" />
+          <EntitySet Name="Report_Reports" EntityType="AMS.AutomationReportModel.Report_Reports" />
+          <EntitySet Name="ReportData_Pingdom" EntityType="AMS.AutomationReportModel.ReportData_Pingdom" />
+          <AssociationSet Name="FK_Pingdom_Summary_Pingdom_Check" Association="AMS.AutomationReportModel.FK_Pingdom_Summary_Pingdom_Check">
+            <End Role="Data_Pingdom_Check" EntitySet="Data_Pingdom_Check" />
+            <End Role="Data_Pingdom_Check_SummaryPerformance" EntitySet="Data_Pingdom_Check_SummaryPerformance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_Pingdom_Data_Pingdom_Check" Association="AMS.AutomationReportModel.FK_ReportData_Pingdom_Data_Pingdom_Check">
+            <End Role="Data_Pingdom_Check" EntitySet="Data_Pingdom_Check" />
+            <End Role="ReportData_Pingdom" EntitySet="ReportData_Pingdom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_ClientSites_Report_Clients" Association="AMS.AutomationReportModel.FK_Report_ClientSites_Report_Clients">
+            <End Role="Report_Clients" EntitySet="Report_Clients" />
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_Reports_Report_ClientSites" Association="AMS.AutomationReportModel.FK_Report_Reports_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Report_Reports" EntitySet="Report_Reports" />
+          </AssociationSet>
+          <EntitySet Name="AutomationReport_Scheduler" EntityType="AMS.AutomationReportModel.AutomationReport_Scheduler" />
+          <EntitySet Name="Data_JiraServiceDesk" EntityType="AMS.AutomationReportModel.Data_JiraServiceDesk" />
+          <EntitySet Name="Report_ClientJiraServiceDesks" EntityType="AMS.AutomationReportModel.Report_ClientJiraServiceDesks" />
+          <EntitySet Name="ReportData_JiraServiceDesk" EntityType="AMS.AutomationReportModel.ReportData_JiraServiceDesk" />
+          <AssociationSet Name="FK_ReportData_JiraServiceDesk_Report_ClientJiraServiceDesks" Association="AMS.AutomationReportModel.FK_ReportData_JiraServiceDesk_Report_ClientJiraServiceDesks">
+            <End Role="Report_ClientJiraServiceDesks" EntitySet="Report_ClientJiraServiceDesks" />
+            <End Role="ReportData_JiraServiceDesk" EntitySet="ReportData_JiraServiceDesk" />
+          </AssociationSet>
+          <EntitySet Name="Report_CustomContent" EntityType="AMS.AutomationReportModel.Report_CustomContent" />
+          <AssociationSet Name="FK_Report_CustomContent_Report_Reports" Association="AMS.AutomationReportModel.FK_Report_CustomContent_Report_Reports">
+            <End Role="Report_Reports" EntitySet="Report_Reports" />
+            <End Role="Report_CustomContent" EntitySet="Report_CustomContent" />
+          </AssociationSet>
+          <EntitySet Name="Data_PageSpeedInsights" EntityType="AMS.AutomationReportModel.Data_PageSpeedInsights" />
+          <EntitySet Name="ReportData_PageSpeedInsights" EntityType="AMS.AutomationReportModel.ReportData_PageSpeedInsights" />
+          <AssociationSet Name="FK_Data_PageSpeedInsights_Report_ClientSites" Association="AMS.AutomationReportModel.FK_Data_PageSpeedInsights_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Data_PageSpeedInsights" EntitySet="Data_PageSpeedInsights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_PageSpeedInsights_Report_ClientSites" Association="AMS.AutomationReportModel.FK_ReportData_PageSpeedInsights_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_PageSpeedInsights" EntitySet="ReportData_PageSpeedInsights" />
+          </AssociationSet>
+          <EntitySet Name="Data_GoogleAnalytic" EntityType="AMS.AutomationReportModel.Data_GoogleAnalytic" />
+          <EntitySet Name="Data_GoogleSearch" EntityType="AMS.AutomationReportModel.Data_GoogleSearch" />
+          <EntitySet Name="ReportData_GoogleSearch" EntityType="AMS.AutomationReportModel.ReportData_GoogleSearch" />
+          <AssociationSet Name="FK_Data_GoogleAnalytic_Report_ClientSites" Association="AMS.AutomationReportModel.FK_Data_GoogleAnalytic_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Data_GoogleAnalytic" EntitySet="Data_GoogleAnalytic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Data_GoogleSearch_Report_ClientSites" Association="AMS.AutomationReportModel.FK_Data_GoogleSearch_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Data_GoogleSearch" EntitySet="Data_GoogleSearch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_GoogleSearch_Report_ClientSites" Association="AMS.AutomationReportModel.FK_ReportData_GoogleSearch_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_GoogleSearch" EntitySet="ReportData_GoogleSearch" />
+          </AssociationSet>
+          <EntitySet Name="ReportData_GoogleAnalytic" EntityType="AMS.AutomationReportModel.ReportData_GoogleAnalytic" />
+          <AssociationSet Name="FK_ReportData_GoogleAnalytic_Report_ClientSites" Association="AMS.AutomationReportModel.FK_ReportData_GoogleAnalytic_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_GoogleAnalytic" EntitySet="ReportData_GoogleAnalytic" />
+          </AssociationSet>
+          <EntitySet Name="Data_GoogleSearch_Detail" EntityType="AMS.AutomationReportModel.Data_GoogleSearch_Detail" />
+          <AssociationSet Name="FK_Data_GoogleSearch_Detail_Data_GoogleSearch" Association="AMS.AutomationReportModel.FK_Data_GoogleSearch_Detail_Data_GoogleSearch">
+            <End Role="Data_GoogleSearch" EntitySet="Data_GoogleSearch" />
+            <End Role="Data_GoogleSearch_Detail" EntitySet="Data_GoogleSearch_Detail" />
+          </AssociationSet>
+          <EntitySet Name="Recommendation_Bank" EntityType="AMS.AutomationReportModel.Recommendation_Bank" />
+          <EntitySet Name="Release_Milestone" EntityType="AMS.AutomationReportModel.Release_Milestone" />
+          <AssociationSet Name="FK_Release_Milestone_Report_ClientSites" Association="AMS.AutomationReportModel.FK_Release_Milestone_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Release_Milestone" EntitySet="Release_Milestone" />
+          </AssociationSet>
+          <EntitySet Name="Data_GoogleSearch_Sitemap" EntityType="AMS.AutomationReportModel.Data_GoogleSearch_Sitemap" />
+          <EntitySet Name="ReportData_GoogleSearch_Sitemap" EntityType="AMS.AutomationReportModel.ReportData_GoogleSearch_Sitemap" />
+          <AssociationSet Name="FK_Data_GoogleSearch_Sitemap_Report_ClientSites" Association="AMS.AutomationReportModel.FK_Data_GoogleSearch_Sitemap_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Data_GoogleSearch_Sitemap" EntitySet="Data_GoogleSearch_Sitemap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_GoogleSearch_Sitemap_Report_ClientSites" Association="AMS.AutomationReportModel.FK_ReportData_GoogleSearch_Sitemap_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_GoogleSearch_Sitemap" EntitySet="ReportData_GoogleSearch_Sitemap" />
+          </AssociationSet>
+          <EntitySet Name="ReportData_ScreamingFrog" EntityType="AMS.AutomationReportModel.ReportData_ScreamingFrog" />
+          <AssociationSet Name="FK_ReportData_ScreamingFrog_Report_ClientSites" Association="AMS.AutomationReportModel.FK_ReportData_ScreamingFrog_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_ScreamingFrog" EntitySet="ReportData_ScreamingFrog" />
+          </AssociationSet>
+          <EntitySet Name="ReportSubscriptions" EntityType="AMS.AutomationReportModel.ReportSubscription" />
+          <EntitySet Name="Dynomappers" EntityType="AMS.AutomationReportModel.Dynomapper" />
+          <EntitySet Name="ReportData_Dynomapper" EntityType="AMS.AutomationReportModel.ReportData_Dynomapper" />
+          <AssociationSet Name="FK_Dynomapper_Report_ClientSites" Association="AMS.AutomationReportModel.FK_Dynomapper_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="Dynomapper" EntitySet="Dynomappers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportData_Dynomapper_Report_ClientSites" Association="AMS.AutomationReportModel.FK_ReportData_Dynomapper_Report_ClientSites">
+            <End Role="Report_ClientSites" EntitySet="Report_ClientSites" />
+            <End Role="ReportData_Dynomapper" EntitySet="ReportData_Dynomapper" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Data_Pingdom_Check">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HostName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastTestTimeUtc" Type="Int64" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CrawledTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Data_Pingdom_Check_SummaryPerformance" Relationship="AMS.AutomationReportModel.FK_Pingdom_Summary_Pingdom_Check" FromRole="Data_Pingdom_Check" ToRole="Data_Pingdom_Check_SummaryPerformance" />
+          <NavigationProperty Name="ReportData_Pingdom" Relationship="AMS.AutomationReportModel.FK_ReportData_Pingdom_Data_Pingdom_Check" FromRole="Data_Pingdom_Check" ToRole="ReportData_Pingdom" />
+        </EntityType>
+        <EntityType Name="Data_Pingdom_Check_SummaryPerformance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CheckId" Type="Int64" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataTimeUtc" Type="Int64" />
+          <Property Name="CrawledTimestamp" Type="DateTime" Precision="7" />
+          <Property Name="Resolution" Type="Int32" />
+          <NavigationProperty Name="Data_Pingdom_Check" Relationship="AMS.AutomationReportModel.FK_Pingdom_Summary_Pingdom_Check" FromRole="Data_Pingdom_Check_SummaryPerformance" ToRole="Data_Pingdom_Check" />
+        </EntityType>
+        <EntityType Name="Report_Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_Report_ClientSites_Report_Clients" FromRole="Report_Clients" ToRole="Report_ClientSites" />
+          <Property Name="LogoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Report_ClientSites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Report_Clients" Relationship="AMS.AutomationReportModel.FK_Report_ClientSites_Report_Clients" FromRole="Report_ClientSites" ToRole="Report_Clients" />
+          <NavigationProperty Name="Report_Reports" Relationship="AMS.AutomationReportModel.FK_Report_Reports_Report_ClientSites" FromRole="Report_ClientSites" ToRole="Report_Reports" />
+          <Property Name="LogoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SiteUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Data_PageSpeedInsights" Relationship="AMS.AutomationReportModel.FK_Data_PageSpeedInsights_Report_ClientSites" FromRole="Report_ClientSites" ToRole="Data_PageSpeedInsights" />
+          <NavigationProperty Name="ReportData_PageSpeedInsights" Relationship="AMS.AutomationReportModel.FK_ReportData_PageSpeedInsights_Report_ClientSites" FromRole="Report_ClientSites" ToRole="ReportData_PageSpeedInsights" />
+          <Property Name="CrawlerConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Data_GoogleAnalytic" Relationship="AMS.AutomationReportModel.FK_Data_GoogleAnalytic_Report_ClientSites" FromRole="Report_ClientSites" ToRole="Data_GoogleAnalytic" />
+          <NavigationProperty Name="Data_GoogleSearch" Relationship="AMS.AutomationReportModel.FK_Data_GoogleSearch_Report_ClientSites" FromRole="Report_ClientSites" ToRole="Data_GoogleSearch" />
+          <NavigationProperty Name="ReportData_GoogleSearch" Relationship="AMS.AutomationReportModel.FK_ReportData_GoogleSearch_Report_ClientSites" FromRole="Report_ClientSites" ToRole="ReportData_GoogleSearch" />
+          <NavigationProperty Name="ReportData_GoogleAnalytic" Relationship="AMS.AutomationReportModel.FK_ReportData_GoogleAnalytic_Report_ClientSites" FromRole="Report_ClientSites" ToRole="ReportData_GoogleAnalytic" />
+          <NavigationProperty Name="Release_Milestone" Relationship="AMS.AutomationReportModel.FK_Release_Milestone_Report_ClientSites" FromRole="Report_ClientSites" ToRole="Release_Milestone" />
+          <NavigationProperty Name="Data_GoogleSearch_Sitemap" Relationship="AMS.AutomationReportModel.FK_Data_GoogleSearch_Sitemap_Report_ClientSites" FromRole="Report_ClientSites" ToRole="Data_GoogleSearch_Sitemap" />
+          <NavigationProperty Name="ReportData_GoogleSearch_Sitemap" Relationship="AMS.AutomationReportModel.FK_ReportData_GoogleSearch_Sitemap_Report_ClientSites" FromRole="Report_ClientSites" ToRole="ReportData_GoogleSearch_Sitemap" />
+          <NavigationProperty Name="ReportData_ScreamingFrog" Relationship="AMS.AutomationReportModel.FK_ReportData_ScreamingFrog_Report_ClientSites" FromRole="Report_ClientSites" ToRole="ReportData_ScreamingFrog" />
+          <NavigationProperty Name="Dynomappers" Relationship="AMS.AutomationReportModel.FK_Dynomapper_Report_ClientSites" FromRole="Report_ClientSites" ToRole="Dynomapper" />
+          <NavigationProperty Name="ReportData_Dynomapper" Relationship="AMS.AutomationReportModel.FK_ReportData_Dynomapper_Report_ClientSites" FromRole="Report_ClientSites" ToRole="ReportData_Dynomapper" />
+        </EntityType>
+        <EntityType Name="Report_Reports">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ToolIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_Report_Reports_Report_ClientSites" FromRole="Report_Reports" ToRole="Report_ClientSites" />
+          <Property Name="ReportName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Report_CustomContent" Relationship="AMS.AutomationReportModel.FK_Report_CustomContent_Report_Reports" FromRole="Report_Reports" ToRole="Report_CustomContent" />
+        </EntityType>
+        <EntityType Name="ReportData_Pingdom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CheckId" Type="Int64" />
+          <Property Name="ReportTimeUtc" Type="Int64" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GeneratedTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Data_Pingdom_Check" Relationship="AMS.AutomationReportModel.FK_ReportData_Pingdom_Data_Pingdom_Check" FromRole="ReportData_Pingdom" ToRole="Data_Pingdom_Check" />
+        </EntityType>
+        <Association Name="FK_Pingdom_Summary_Pingdom_Check">
+          <End Type="AMS.AutomationReportModel.Data_Pingdom_Check" Role="Data_Pingdom_Check" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Data_Pingdom_Check_SummaryPerformance" Role="Data_Pingdom_Check_SummaryPerformance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Data_Pingdom_Check">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_Pingdom_Check_SummaryPerformance">
+              <PropertyRef Name="CheckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_Pingdom_Data_Pingdom_Check">
+          <End Type="AMS.AutomationReportModel.Data_Pingdom_Check" Role="Data_Pingdom_Check" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.ReportData_Pingdom" Role="ReportData_Pingdom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Data_Pingdom_Check">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_Pingdom">
+              <PropertyRef Name="CheckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_ClientSites_Report_Clients">
+          <End Type="AMS.AutomationReportModel.Report_Clients" Role="Report_Clients" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report_ClientSites">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_Reports_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Report_Reports" Role="Report_Reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report_Reports">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AutomationReport_Scheduler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ExecutionTime" Type="DateTime" Precision="7" />
+          <Property Name="ExecutionType" Type="Int32" />
+          <Property Name="ExecutionExpression" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="IsHourly" Type="Boolean" />
+          <Property Name="HourlyEveryHour" Type="Int32" />
+          <Property Name="IsDaily" Type="Boolean" />
+          <Property Name="DailyEveryDay" Type="Boolean" />
+          <Property Name="DailyEveryWeekDay" Type="Boolean" />
+          <Property Name="IsWeekly" Type="Boolean" />
+          <Property Name="WeeklyDays" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StartAtHour" Type="Int32" />
+          <Property Name="StartAtMinute" Type="Int32" />
+          <Property Name="ExecutionTool" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DailyEveryDayNumber" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Data_JiraServiceDesk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ServiceDeskUrl" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DatasetType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="JQL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataTimeUtc" Type="Int64" />
+          <Property Name="CrawledTimestamp" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="Report_ClientJiraServiceDesks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ServiceDeskUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OrgNameForProjectIfNotProvided" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ReportData_JiraServiceDesk" Relationship="AMS.AutomationReportModel.FK_ReportData_JiraServiceDesk_Report_ClientJiraServiceDesks" FromRole="Report_ClientJiraServiceDesks" ToRole="ReportData_JiraServiceDesk" />
+        </EntityType>
+        <EntityType Name="ReportData_JiraServiceDesk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientServiceDeskId" Type="Guid" />
+          <Property Name="DatasetType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTimeUtc" Type="Int64" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GeneratedTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientJiraServiceDesks" Relationship="AMS.AutomationReportModel.FK_ReportData_JiraServiceDesk_Report_ClientJiraServiceDesks" FromRole="ReportData_JiraServiceDesk" ToRole="Report_ClientJiraServiceDesks" />
+        </EntityType>
+        <Association Name="FK_ReportData_JiraServiceDesk_Report_ClientJiraServiceDesks">
+          <End Type="AMS.AutomationReportModel.Report_ClientJiraServiceDesks" Role="Report_ClientJiraServiceDesks" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.ReportData_JiraServiceDesk" Role="ReportData_JiraServiceDesk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientJiraServiceDesks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_JiraServiceDesk">
+              <PropertyRef Name="ClientServiceDeskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Report_CustomContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReportId" Type="Guid" Nullable="false" />
+          <Property Name="ReportDays" Type="Int32" Nullable="false" />
+          <Property Name="ReportTo" Type="Int64" Nullable="false" />
+          <Property Name="CustomReportContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UnderReportSection" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Report_Reports" Relationship="AMS.AutomationReportModel.FK_Report_CustomContent_Report_Reports" FromRole="Report_CustomContent" ToRole="Report_Reports" />
+        </EntityType>
+        <Association Name="FK_Report_CustomContent_Report_Reports">
+          <End Type="AMS.AutomationReportModel.Report_Reports" Role="Report_Reports" Multiplicity="1" />
+          <End Type="AMS.AutomationReportModel.Report_CustomContent" Role="Report_CustomContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_Reports">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Report_CustomContent">
+              <PropertyRef Name="ReportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Data_PageSpeedInsights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Param" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataTimeUtc" Type="Int64" />
+          <Property Name="CrawledTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_Data_PageSpeedInsights_Report_ClientSites" FromRole="Data_PageSpeedInsights" ToRole="Report_ClientSites" />
+        </EntityType>
+        <EntityType Name="ReportData_PageSpeedInsights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Double" />
+          <Property Name="Emulator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LoadingExperience" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OriginLoadingExperience" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTimeUtc" Type="Int64" />
+          <Property Name="GeneratedTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_ReportData_PageSpeedInsights_Report_ClientSites" FromRole="ReportData_PageSpeedInsights" ToRole="Report_ClientSites" />
+          <Property Name="HistoryJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Data_PageSpeedInsights_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Data_PageSpeedInsights" Role="Data_PageSpeedInsights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_PageSpeedInsights">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_PageSpeedInsights_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.ReportData_PageSpeedInsights" Role="ReportData_PageSpeedInsights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_PageSpeedInsights">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Data_GoogleAnalytic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataTimeUtc" Type="Int64" />
+          <Property Name="CrawledTimestamp" Type="DateTime" Precision="7" />
+          <Property Name="DatasetType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_Data_GoogleAnalytic_Report_ClientSites" FromRole="Data_GoogleAnalytic" ToRole="Report_ClientSites" />
+        </EntityType>
+        <EntityType Name="Data_GoogleSearch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataTimeUtc" Type="Int64" />
+          <Property Name="CrawledTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_Data_GoogleSearch_Report_ClientSites" FromRole="Data_GoogleSearch" ToRole="Report_ClientSites" />
+          <NavigationProperty Name="Data_GoogleSearch_Detail" Relationship="AMS.AutomationReportModel.FK_Data_GoogleSearch_Detail_Data_GoogleSearch" FromRole="Data_GoogleSearch" ToRole="Data_GoogleSearch_Detail" />
+        </EntityType>
+        <EntityType Name="ReportData_GoogleSearch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTimeUtc" Type="Int64" />
+          <Property Name="GeneratedTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_ReportData_GoogleSearch_Report_ClientSites" FromRole="ReportData_GoogleSearch" ToRole="Report_ClientSites" />
+          <Property Name="Keyword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Data_GoogleAnalytic_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Data_GoogleAnalytic" Role="Data_GoogleAnalytic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_GoogleAnalytic">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Data_GoogleSearch_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Data_GoogleSearch" Role="Data_GoogleSearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_GoogleSearch">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_GoogleSearch_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.ReportData_GoogleSearch" Role="ReportData_GoogleSearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_GoogleSearch">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReportData_GoogleAnalytic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTimeUtc" Type="Int64" />
+          <Property Name="GeneratedTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_ReportData_GoogleAnalytic_Report_ClientSites" FromRole="ReportData_GoogleAnalytic" ToRole="Report_ClientSites" />
+        </EntityType>
+        <Association Name="FK_ReportData_GoogleAnalytic_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.ReportData_GoogleAnalytic" Role="ReportData_GoogleAnalytic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_GoogleAnalytic">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Data_GoogleSearch_Detail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="GoogleSearchId" Type="Guid" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataTimeUtc" Type="Int64" />
+          <Property Name="CrawledTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Data_GoogleSearch" Relationship="AMS.AutomationReportModel.FK_Data_GoogleSearch_Detail_Data_GoogleSearch" FromRole="Data_GoogleSearch_Detail" ToRole="Data_GoogleSearch" />
+          <Property Name="Keyword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Data_GoogleSearch_Detail_Data_GoogleSearch">
+          <End Type="AMS.AutomationReportModel.Data_GoogleSearch" Role="Data_GoogleSearch" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Data_GoogleSearch_Detail" Role="Data_GoogleSearch_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Data_GoogleSearch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_GoogleSearch_Detail">
+              <PropertyRef Name="GoogleSearchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Recommendation_Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReportSection" Type="Int32" />
+          <Property Name="Rule" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Recommendation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportProperty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RuleSql" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Release_Milestone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="ReleaseVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReleaseDate" Type="DateTime" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_Release_Milestone_Report_ClientSites" FromRole="Release_Milestone" ToRole="Report_ClientSites" />
+        </EntityType>
+        <Association Name="FK_Release_Milestone_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Release_Milestone" Role="Release_Milestone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Release_Milestone">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Data_GoogleSearch_Sitemap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataTimeUtc" Type="Int64" />
+          <Property Name="CrawledTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_Data_GoogleSearch_Sitemap_Report_ClientSites" FromRole="Data_GoogleSearch_Sitemap" ToRole="Report_ClientSites" />
+        </EntityType>
+        <EntityType Name="ReportData_GoogleSearch_Sitemap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTimeUtc" Type="Int64" />
+          <Property Name="GeneratedTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_ReportData_GoogleSearch_Sitemap_Report_ClientSites" FromRole="ReportData_GoogleSearch_Sitemap" ToRole="Report_ClientSites" />
+        </EntityType>
+        <Association Name="FK_Data_GoogleSearch_Sitemap_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Data_GoogleSearch_Sitemap" Role="Data_GoogleSearch_Sitemap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Data_GoogleSearch_Sitemap">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_GoogleSearch_Sitemap_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.ReportData_GoogleSearch_Sitemap" Role="ReportData_GoogleSearch_Sitemap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_GoogleSearch_Sitemap">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReportData_ScreamingFrog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTimeUtc" Type="Int64" />
+          <Property Name="GeneratedTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_ReportData_ScreamingFrog_Report_ClientSites" FromRole="ReportData_ScreamingFrog" ToRole="Report_ClientSites" />
+        </EntityType>
+        <Association Name="FK_ReportData_ScreamingFrog_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.ReportData_ScreamingFrog" Role="ReportData_ScreamingFrog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_ScreamingFrog">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReportSubscription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReportId" Type="Guid" Nullable="false" />
+          <Property Name="ReceiverEmails" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Frequency" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SubscribedByUser" Type="Boolean" />
+          <Property Name="IsHourly" Type="Boolean" />
+          <Property Name="HourlyEveryHour" Type="Int32" />
+          <Property Name="IsDaily" Type="Boolean" />
+          <Property Name="DailyEveryDay" Type="Boolean" />
+          <Property Name="DailyEveryWeekDay" Type="Boolean" />
+          <Property Name="DailyEveryDayNumber" Type="Int32" />
+          <Property Name="IsWeekly" Type="Boolean" />
+          <Property Name="WeeklyDays" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StartAtHour" Type="Int32" />
+          <Property Name="StartAtMinute" Type="Int32" />
+          <Property Name="SubscribedUser" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsMonthly" Type="Boolean" />
+          <Property Name="MonthlyDay" Type="Int32" />
+          <Property Name="MonthlyEveryMonth" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Dynomapper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="LatestRunDate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_Dynomapper_Report_ClientSites" FromRole="Dynomapper" ToRole="Report_ClientSites" />
+        </EntityType>
+        <EntityType Name="ReportData_Dynomapper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ClientSiteId" Type="Guid" />
+          <Property Name="Json" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTimeUtc" Type="Int64" />
+          <Property Name="GeneratedTimestamp" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Report_ClientSites" Relationship="AMS.AutomationReportModel.FK_ReportData_Dynomapper_Report_ClientSites" FromRole="ReportData_Dynomapper" ToRole="Report_ClientSites" />
+        </EntityType>
+        <Association Name="FK_Dynomapper_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.Dynomapper" Role="Dynomapper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Dynomapper">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportData_Dynomapper_Report_ClientSites">
+          <End Type="AMS.AutomationReportModel.Report_ClientSites" Role="Report_ClientSites" Multiplicity="0..1" />
+          <End Type="AMS.AutomationReportModel.ReportData_Dynomapper" Role="ReportData_Dynomapper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report_ClientSites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportData_Dynomapper">
+              <PropertyRef Name="ClientSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AMSAutomationReportModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Data_Pingdom_Check">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Data_Pingdom_Check">
+              <MappingFragment StoreEntitySet="Data_Pingdom_Check">
+                <ScalarProperty Name="CrawledTimestamp" ColumnName="CrawledTimestamp" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="LastTestTimeUtc" ColumnName="LastTestTimeUtc" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Data_Pingdom_Check_SummaryPerformance">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Data_Pingdom_Check_SummaryPerformance">
+              <MappingFragment StoreEntitySet="Data_Pingdom_Check_SummaryPerformance">
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+                <ScalarProperty Name="CrawledTimestamp" ColumnName="CrawledTimestamp" />
+                <ScalarProperty Name="DataTimeUtc" ColumnName="DataTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="CheckId" ColumnName="CheckId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report_Clients">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Report_Clients">
+              <MappingFragment StoreEntitySet="Report_Clients">
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report_ClientSites">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Report_ClientSites">
+              <MappingFragment StoreEntitySet="Report_ClientSites">
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="CrawlerConfig" ColumnName="CrawlerConfig" />
+                <ScalarProperty Name="SiteUrl" ColumnName="SiteUrl" />
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report_Reports">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Report_Reports">
+              <MappingFragment StoreEntitySet="Report_Reports">
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="ToolIds" ColumnName="ToolIds" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportData_Pingdom">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.ReportData_Pingdom">
+              <MappingFragment StoreEntitySet="ReportData_Pingdom">
+                <ScalarProperty Name="GeneratedTimestamp" ColumnName="GeneratedTimestamp" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ReportTimeUtc" ColumnName="ReportTimeUtc" />
+                <ScalarProperty Name="CheckId" ColumnName="CheckId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutomationReport_Scheduler">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.AutomationReport_Scheduler">
+              <MappingFragment StoreEntitySet="AutomationReport_Scheduler">
+                <ScalarProperty Name="DailyEveryDayNumber" ColumnName="DailyEveryDayNumber" />
+                <ScalarProperty Name="ExecutionTool" ColumnName="ExecutionTool" />
+                <ScalarProperty Name="StartAtMinute" ColumnName="StartAtMinute" />
+                <ScalarProperty Name="StartAtHour" ColumnName="StartAtHour" />
+                <ScalarProperty Name="WeeklyDays" ColumnName="WeeklyDays" />
+                <ScalarProperty Name="IsWeekly" ColumnName="IsWeekly" />
+                <ScalarProperty Name="DailyEveryWeekDay" ColumnName="DailyEveryWeekDay" />
+                <ScalarProperty Name="DailyEveryDay" ColumnName="DailyEveryDay" />
+                <ScalarProperty Name="IsDaily" ColumnName="IsDaily" />
+                <ScalarProperty Name="HourlyEveryHour" ColumnName="HourlyEveryHour" />
+                <ScalarProperty Name="IsHourly" ColumnName="IsHourly" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExecutionExpression" ColumnName="ExecutionExpression" />
+                <ScalarProperty Name="ExecutionType" ColumnName="ExecutionType" />
+                <ScalarProperty Name="ExecutionTime" ColumnName="ExecutionTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Data_JiraServiceDesk">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Data_JiraServiceDesk">
+              <MappingFragment StoreEntitySet="Data_JiraServiceDesk">
+                <ScalarProperty Name="CrawledTimestamp" ColumnName="CrawledTimestamp" />
+                <ScalarProperty Name="DataTimeUtc" ColumnName="DataTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="JQL" ColumnName="JQL" />
+                <ScalarProperty Name="DatasetType" ColumnName="DatasetType" />
+                <ScalarProperty Name="ProjectKey" ColumnName="ProjectKey" />
+                <ScalarProperty Name="ServiceDeskUrl" ColumnName="ServiceDeskUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report_ClientJiraServiceDesks">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Report_ClientJiraServiceDesks">
+              <MappingFragment StoreEntitySet="Report_ClientJiraServiceDesks">
+                <ScalarProperty Name="OrgNameForProjectIfNotProvided" ColumnName="OrgNameForProjectIfNotProvided" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="ProjectKey" ColumnName="ProjectKey" />
+                <ScalarProperty Name="ServiceDeskUrl" ColumnName="ServiceDeskUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportData_JiraServiceDesk">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.ReportData_JiraServiceDesk">
+              <MappingFragment StoreEntitySet="ReportData_JiraServiceDesk">
+                <ScalarProperty Name="GeneratedTimestamp" ColumnName="GeneratedTimestamp" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ReportTimeUtc" ColumnName="ReportTimeUtc" />
+                <ScalarProperty Name="DatasetType" ColumnName="DatasetType" />
+                <ScalarProperty Name="ClientServiceDeskId" ColumnName="ClientServiceDeskId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report_CustomContent">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Report_CustomContent">
+              <MappingFragment StoreEntitySet="Report_CustomContent">
+                <ScalarProperty Name="UnderReportSection" ColumnName="UnderReportSection" />
+                <ScalarProperty Name="CustomReportContent" ColumnName="CustomReportContent" />
+                <ScalarProperty Name="ReportTo" ColumnName="ReportTo" />
+                <ScalarProperty Name="ReportDays" ColumnName="ReportDays" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Data_PageSpeedInsights">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Data_PageSpeedInsights">
+              <MappingFragment StoreEntitySet="Data_PageSpeedInsights">
+                <ScalarProperty Name="CrawledTimestamp" ColumnName="CrawledTimestamp" />
+                <ScalarProperty Name="DataTimeUtc" ColumnName="DataTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="Param" ColumnName="Param" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportData_PageSpeedInsights">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.ReportData_PageSpeedInsights">
+              <MappingFragment StoreEntitySet="ReportData_PageSpeedInsights">
+                <ScalarProperty Name="HistoryJson" ColumnName="HistoryJson" />
+                <ScalarProperty Name="GeneratedTimestamp" ColumnName="GeneratedTimestamp" />
+                <ScalarProperty Name="ReportTimeUtc" ColumnName="ReportTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="OriginLoadingExperience" ColumnName="OriginLoadingExperience" />
+                <ScalarProperty Name="LoadingExperience" ColumnName="LoadingExperience" />
+                <ScalarProperty Name="Emulator" ColumnName="Emulator" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Data_GoogleAnalytic">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Data_GoogleAnalytic">
+              <MappingFragment StoreEntitySet="Data_GoogleAnalytic">
+                <ScalarProperty Name="DatasetType" ColumnName="DatasetType" />
+                <ScalarProperty Name="CrawledTimestamp" ColumnName="CrawledTimestamp" />
+                <ScalarProperty Name="DataTimeUtc" ColumnName="DataTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Data_GoogleSearch">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Data_GoogleSearch">
+              <MappingFragment StoreEntitySet="Data_GoogleSearch">
+                <ScalarProperty Name="CrawledTimestamp" ColumnName="CrawledTimestamp" />
+                <ScalarProperty Name="DataTimeUtc" ColumnName="DataTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportData_GoogleSearch">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.ReportData_GoogleSearch">
+              <MappingFragment StoreEntitySet="ReportData_GoogleSearch">
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="GeneratedTimestamp" ColumnName="GeneratedTimestamp" />
+                <ScalarProperty Name="ReportTimeUtc" ColumnName="ReportTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportData_GoogleAnalytic">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.ReportData_GoogleAnalytic">
+              <MappingFragment StoreEntitySet="ReportData_GoogleAnalytic">
+                <ScalarProperty Name="GeneratedTimestamp" ColumnName="GeneratedTimestamp" />
+                <ScalarProperty Name="ReportTimeUtc" ColumnName="ReportTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Data_GoogleSearch_Detail">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Data_GoogleSearch_Detail">
+              <MappingFragment StoreEntitySet="Data_GoogleSearch_Detail">
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="CrawledTimestamp" ColumnName="CrawledTimestamp" />
+                <ScalarProperty Name="DataTimeUtc" ColumnName="DataTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="GoogleSearchId" ColumnName="GoogleSearchId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recommendation_Bank">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Recommendation_Bank">
+              <MappingFragment StoreEntitySet="Recommendation_Bank">
+                <ScalarProperty Name="RuleSql" ColumnName="RuleSql" />
+                <ScalarProperty Name="ReportProperty" ColumnName="ReportProperty" />
+                <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
+                <ScalarProperty Name="Rule" ColumnName="Rule" />
+                <ScalarProperty Name="ReportSection" ColumnName="ReportSection" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Release_Milestone">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Release_Milestone">
+              <MappingFragment StoreEntitySet="Release_Milestone">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="ReleaseVersion" ColumnName="ReleaseVersion" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Data_GoogleSearch_Sitemap">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Data_GoogleSearch_Sitemap">
+              <MappingFragment StoreEntitySet="Data_GoogleSearch_Sitemap">
+                <ScalarProperty Name="CrawledTimestamp" ColumnName="CrawledTimestamp" />
+                <ScalarProperty Name="DataTimeUtc" ColumnName="DataTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportData_GoogleSearch_Sitemap">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.ReportData_GoogleSearch_Sitemap">
+              <MappingFragment StoreEntitySet="ReportData_GoogleSearch_Sitemap">
+                <ScalarProperty Name="GeneratedTimestamp" ColumnName="GeneratedTimestamp" />
+                <ScalarProperty Name="ReportTimeUtc" ColumnName="ReportTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportData_ScreamingFrog">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.ReportData_ScreamingFrog">
+              <MappingFragment StoreEntitySet="ReportData_ScreamingFrog">
+                <ScalarProperty Name="GeneratedTimestamp" ColumnName="GeneratedTimestamp" />
+                <ScalarProperty Name="ReportTimeUtc" ColumnName="ReportTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportSubscriptions">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.ReportSubscription">
+              <MappingFragment StoreEntitySet="ReportSubscription">
+                <ScalarProperty Name="MonthlyEveryMonth" ColumnName="MonthlyEveryMonth" />
+                <ScalarProperty Name="MonthlyDay" ColumnName="MonthlyDay" />
+                <ScalarProperty Name="IsMonthly" ColumnName="IsMonthly" />
+                <ScalarProperty Name="SubscribedUser" ColumnName="SubscribedUser" />
+                <ScalarProperty Name="StartAtMinute" ColumnName="StartAtMinute" />
+                <ScalarProperty Name="StartAtHour" ColumnName="StartAtHour" />
+                <ScalarProperty Name="WeeklyDays" ColumnName="WeeklyDays" />
+                <ScalarProperty Name="IsWeekly" ColumnName="IsWeekly" />
+                <ScalarProperty Name="DailyEveryDayNumber" ColumnName="DailyEveryDayNumber" />
+                <ScalarProperty Name="DailyEveryWeekDay" ColumnName="DailyEveryWeekDay" />
+                <ScalarProperty Name="DailyEveryDay" ColumnName="DailyEveryDay" />
+                <ScalarProperty Name="IsDaily" ColumnName="IsDaily" />
+                <ScalarProperty Name="HourlyEveryHour" ColumnName="HourlyEveryHour" />
+                <ScalarProperty Name="IsHourly" ColumnName="IsHourly" />
+                <ScalarProperty Name="SubscribedByUser" ColumnName="SubscribedByUser" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="ReceiverEmails" ColumnName="ReceiverEmails" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dynomappers">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.Dynomapper">
+              <MappingFragment StoreEntitySet="Dynomapper">
+                <ScalarProperty Name="LatestRunDate" ColumnName="LatestRunDate" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportData_Dynomapper">
+            <EntityTypeMapping TypeName="AMS.AutomationReportModel.ReportData_Dynomapper">
+              <MappingFragment StoreEntitySet="ReportData_Dynomapper">
+                <ScalarProperty Name="GeneratedTimestamp" ColumnName="GeneratedTimestamp" />
+                <ScalarProperty Name="ReportTimeUtc" ColumnName="ReportTimeUtc" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ClientSiteId" ColumnName="ClientSiteId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

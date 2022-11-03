@@ -1,0 +1,1 @@
+This is a sample folder of how a folder configured in App.config (googleanalytics:CredentialsFolder or googlesearch:CredentialsFolder) looks like. For development and production deployment, you need to get the credential JSON files from Google Developer Console.
